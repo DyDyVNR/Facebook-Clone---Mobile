@@ -25,15 +25,15 @@ class _IntroPageState extends State<IntroPage> {
           padding: const EdgeInsets.only(bottom: 15),
           child: Column(
             children: [
-              Spacer(),
+              const Spacer(),
               Container(              
-                child: Icon(FontAwesomeIcons.facebook, 
+                child: const Icon(FontAwesomeIcons.facebook, 
                 //color: Colors.blueAccent[700],
                 size: 60,),              
               ),
-              Spacer(),
+              const Spacer(),
               Text("from", style: TextStyle(color: Colors.blueAccent[700]),),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                 Icon(CupertinoIcons.loop_thick, color:  Colors.white,),
@@ -47,7 +47,7 @@ class _IntroPageState extends State<IntroPage> {
 
 
 Future _login() async {
-  await Future.delayed(Duration(seconds: 1)).then((value) {
+  await Future.delayed(const Duration(seconds: 1)).then((value) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(

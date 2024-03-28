@@ -18,7 +18,7 @@ class _StoryPageState extends State<StoryPage> {
   Widget get _buildPageView {
     return PageView(
       pageSnapping: true,
-      children: [],
+      children: const [],
 
     );
   }

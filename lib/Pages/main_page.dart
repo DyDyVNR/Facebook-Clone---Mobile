@@ -1,6 +1,5 @@
 import 'package:assignment_1/Pages/newsfeed_page.dart';
 import 'package:assignment_1/Pages/profile_page.dart';
-import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,6 +9,7 @@ int currentIndex = 0;
 
 GlobalKey<_MainPageState> mainPageKey = GlobalKey();
 class MainPage extends StatefulWidget {
+  @override
   Key key = mainPageKey;
   
    MainPage({ Key? key }) : super(key: key);
@@ -33,7 +33,7 @@ class _MainPageState extends State<MainPage> {
         }),
       //  physics: NeverScrollableScrollPhysics(),
         children: [     
-         NewsfeedPage(),
+          NewsfeedPage(),
          
          ProfilePage()
         ],
@@ -58,7 +58,7 @@ class _MainPageState extends State<MainPage> {
         setState(() {     
          if (currentIndex != index) {
            currentIndex = index;
-          pageController.animateToPage(index, duration: Duration(milliseconds: 180), curve: Curves.easeInOut); 
+          pageController.animateToPage(index, duration: const Duration(milliseconds: 180), curve: Curves.easeInOut); 
           return;
          }
           else { 
@@ -73,7 +73,7 @@ class _MainPageState extends State<MainPage> {
         );
       
       },
-      items: [
+      items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: "", ),
         BottomNavigationBarItem(icon: Icon(Icons.ondemand_video), label: ""),
         BottomNavigationBarItem(icon: Icon(Icons.store_outlined), label: ""),

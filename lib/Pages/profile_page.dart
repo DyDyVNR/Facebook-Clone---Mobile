@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 GlobalKey<_ProfilePageState> profilePageKey = GlobalKey();
 
 class ProfilePage extends StatefulWidget {
+  @override
   Key key = profilePageKey;
   ProfilePage({ Key? key }) : super(key: key);
 
@@ -16,7 +17,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,14 +29,14 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget get _buildBody {
     return SingleChildScrollView(        
         controller: _scrollController,
-        child: Container(          
+        child: SizedBox(          
           height: MediaQuery.of(context).size.height *1.7,
           child: Stack(            
             children: [
               Container(),
                 _buildCoverPhoto,
                 _buildProfilePhoto,
-                Center(heightFactor: 33, child: Text("Vannara Net", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22))),
+                const Center(heightFactor: 33, child: Text("Vannara Net", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22))),
                 Positioned(
                   top: 350, right: 100,
                   child: _buildCameraIcon),
@@ -48,7 +49,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Column(                
                     children: [
                       _buildInfo,
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       _buildFriends
                       
                       ]
@@ -63,10 +64,10 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget get _buildCoverPhoto {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       color: Colors.grey[700],
       height:  300,
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(CupertinoIcons.camera, color: Colors.white,),
@@ -106,12 +107,12 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget get _buildCameraIcon {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
         color: Colors.white.withOpacity(0.2)
       ),
-      child: Icon(
+      child: const Icon(
         CupertinoIcons.camera_fill
       ),
     );
@@ -122,29 +123,29 @@ class _ProfilePageState extends State<ProfilePage> {
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,      
         children: [
-          SizedBox(width: 10,),
+          const SizedBox(width: 10,),
           SizedBox(
             width: 145, height: 35,
-            child: TextButton.icon(onPressed: (){}, icon: Icon(Icons.add_circle, color: Colors.white,), label: Text("Add to story", style: TextStyle(color: Colors.white),), 
+            child: TextButton.icon(onPressed: (){}, icon: const Icon(Icons.add_circle, color: Colors.white,), label: const Text("Add to story", style: TextStyle(color: Colors.white),), 
             style: ButtonStyle(
               alignment: Alignment.center,
               backgroundColor: MaterialStateColor.resolveWith((states) => Colors.blue)
             ),),
           ),
-          SizedBox(width: 10,),
+          const SizedBox(width: 10,),
           SizedBox(
             width: 145, height: 35,
-            child: TextButton.icon(onPressed: (){}, icon: Icon(Icons.edit, color: Colors.white,), label: Text("Edit profile", style: TextStyle(color: Colors.white)), 
+            child: TextButton.icon(onPressed: (){}, icon: const Icon(Icons.edit, color: Colors.white,), label: const Text("Edit profile", style: TextStyle(color: Colors.white)), 
             style: ButtonStyle(                        
               backgroundColor: MaterialStateProperty.all(Colors.grey),        
             ),),
           ) ,
-          SizedBox(width: 10,),
+          const SizedBox(width: 10,),
           ElevatedButton(onPressed: (){},  style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.grey)
             ), 
-            child: Icon(Icons.more_horiz)),
-          SizedBox(width: 10,),   
+            child: const Icon(Icons.more_horiz)),
+          const SizedBox(width: 10,),   
         ],
       )
     ;
@@ -152,42 +153,42 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget get _buildInfo {
     return  Container(
-      constraints: BoxConstraints(maxHeight: double.infinity),
+      constraints: const BoxConstraints(maxHeight: double.infinity),
       child: ListView(      
         shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           children: [
-            ListTile(
+            const ListTile(
               leading: Icon(
                 FontAwesomeIcons.houseUser,      
               ),
               title: Text("Lives in Phnom Penh"),
             ),
-             ListTile(
+             const ListTile(
               leading: Icon(
                 CupertinoIcons.location_solid,      
               ),
               title: Text("From Phnom Penh"),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(
                 FontAwesomeIcons.clock,      
               ),
               title: Text("Joined June 2016"),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(
                 FontAwesomeIcons.calendarCheck,      
               ),
               title: Text("Followed by 666,666 poeple"),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(
                 FontAwesomeIcons.instagram,      
               ),
               title: Text("dydyvnr"),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(
                 Icons.more_horiz,      
               ),
@@ -195,8 +196,8 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
-              child: TextButton(onPressed: (){}, child: Text("Edit public details", style: TextStyle(color: Colors.blue[100]) ,), 
-                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue.withOpacity(0.7))),),
+              child: TextButton(onPressed: (){}, 
+                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue.withOpacity(0.7))), child: Text("Edit public details", style: TextStyle(color: Colors.blue[100]) ,),),
             )
           ],      
       ),
@@ -207,23 +208,23 @@ class _ProfilePageState extends State<ProfilePage> {
     return Expanded(
         
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,            
             children: [
-              Row(
+              const Row(
                 children: [
                   Text("Friends", style: TextStyle(fontWeight: FontWeight.bold),), Spacer(), Text("Find Friends", style:  TextStyle(color: Colors.blue),)
                 ],          
               ),
-              Text("666 friends"),
+              const Text("666 friends"),
               Container(             
-                 constraints: BoxConstraints(maxHeight: double.infinity),
-                  child: GridView.builder(padding: EdgeInsets.only(top: 15),
-                    physics: NeverScrollableScrollPhysics(),
+                 constraints: const BoxConstraints(maxHeight: double.infinity),
+                  child: GridView.builder(padding: const EdgeInsets.only(top: 15),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: 6,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                       childAspectRatio: 0.9,
                       crossAxisSpacing: 10,
@@ -251,11 +252,11 @@ class _ProfilePageState extends State<ProfilePage> {
                       
                     
                   ),  
-                  SizedBox(height: 10,)  ,
+                  const SizedBox(height: 10,)  ,
                 SizedBox(
                   width: 1000,
-                  child: TextButton(onPressed: (){}, child: Text("See all Friends", style: TextStyle(color: Colors.white) ,), 
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey[700])),),
+                  child: TextButton(onPressed: (){}, 
+                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey[700])), child: const Text("See all Friends", style: TextStyle(color: Colors.white) ,),),
                 )                                            
             ],
           ),
@@ -268,7 +269,7 @@ class _ProfilePageState extends State<ProfilePage> {
   void goToTop() {
     _scrollController.animateTo(
       0, 
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.bounceInOut);
       
   }

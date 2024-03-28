@@ -3,8 +3,6 @@
 import 'package:assignment_1/Models/user_model.dart';
 import 'package:assignment_1/Pages/main_page.dart';
 import 'package:assignment_1/Pages/post_preview_page.dart';
-import 'package:assignment_1/Pages/profile_page.dart';
-import 'package:assignment_1/constants/image_list_constant.dart';
 import 'package:assignment_1/constants/user_list_constant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +12,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 GlobalKey<_NewsfeedPageState> NewsfeedPageKey = GlobalKey();
 class NewsfeedPage extends StatefulWidget {
-  final Key key = NewsfeedPageKey; 
+  @override
+  final Key key = NewsfeedPageKey;
+
+  NewsfeedPage({Key? key}) : super(key: key); 
 
   
   @override
@@ -25,13 +26,13 @@ class NewsfeedPage extends StatefulWidget {
 class _NewsfeedPageState extends State<NewsfeedPage> with AutomaticKeepAliveClientMixin{
 
   ScrollController _scrollController = ScrollController();
-   bool _showAppbar = true; 
+  bool _showAppbar = true; 
   bool isScrollingDown = false;
 
   @override
 void initState() {
   super.initState();
-  _scrollController = new ScrollController();
+  _scrollController = ScrollController();
   _scrollController.addListener(() {
     if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
       if (!isScrollingDown) {

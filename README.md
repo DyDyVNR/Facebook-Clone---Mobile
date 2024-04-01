@@ -1,4 +1,4 @@
-# assignment_1
+# Facebook UI Clone
 
 A new Flutter project.
 
